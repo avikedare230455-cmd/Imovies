@@ -1,0 +1,111 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    background-color: #08090c;
+    color: #f1f5f9;
+    overflow-x: hidden;
+  }
+
+  /* Custom Cinema Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #08090c;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #1e2430;
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #e50914;
+  }
+}
+
+/* Glassmorphism Cards */
+.cinema-glass {
+  background: rgba(19, 22, 28, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.cinema-glass-hover {
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.cinema-glass-hover:hover {
+  background: rgba(28, 33, 43, 0.85);
+  border-color: rgba(255, 255, 255, 0.18);
+  transform: translateY(-3px);
+}
+
+/* Curved Cinema Screen */
+.cinema-curved-screen {
+  position: relative;
+  width: 85%;
+  max-width: 640px;
+  height: 40px;
+  margin: 0 auto 30px auto;
+  border-top: 4px solid #06b6d4;
+  border-radius: 50% 50% 0 0 / 25px 25px 0 0;
+  box-shadow: 0 10px 30px -4px rgba(6, 182, 212, 0.4);
+}
+
+.cinema-curved-screen::after {
+  content: 'ALL EYES ON THE SCREEN';
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 10px;
+  letter-spacing: 0.25em;
+  font-weight: 600;
+  color: rgba(6, 182, 212, 0.6);
+  white-space: nowrap;
+}
+
+/* Light projector beam simulation */
+.cinema-projector-beam {
+  background: radial-gradient(ellipse at 50% 0%, rgba(6, 182, 212, 0.15) 0%, rgba(6, 182, 212, 0) 70%);
+}
+
+/* Ticket Perforated Edge Effect */
+.ticket-perforated {
+  position: relative;
+}
+.ticket-perforated::before,
+.ticket-perforated::after {
+  content: '';
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  background-color: #08090c;
+  border-radius: 50%;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+}
+.ticket-perforated::before {
+  left: -12px;
+}
+.ticket-perforated::after {
+  right: -12px;
+}
+
+/* Smooth Pulse Animation */
+@keyframes seat-pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.08);
+  }
+}
+
+.animate-seat-selected {
+  animation: seat-pulse 1.8s infinite ease-in-out;
+}
